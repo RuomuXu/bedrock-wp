@@ -1,0 +1,17 @@
+/*
+    Theme Name: Layui WP
+    Theme URI: https://987u.com/
+    Author: Ruomu
+    Author URI: https://987u.com/
+    Description: A WordPress theme using layui.
+    Version: 0.0.1
+    Text Domain: lwp
+    Tags: custom-theme, responsive, safe
+*/
+
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
