@@ -1,8 +1,9 @@
 <?php
-
 add_action('acf/init', 'registerBlocks');
-function registerBlocks() {
-    if ( ! function_exists('register_block_type') ) {
+
+function registerBlocks()
+{
+    if (!function_exists('register_block_type')) {
         return;
     }
 
@@ -19,14 +20,15 @@ function registerBlocks() {
 
     foreach ($this->blocks as $block) {
         $block_path = get_template_directory()  . '/blocks/' . $block;
-        register_block_type( $block_path , $block_settings );
+        register_block_type($block_path, $block_settings);
     }
 }
 
 global $used_blocks_css;
 $used_blocks_css = [];
 
-function render_custom_block($attributes, $content, $block) {
+function render_custom_block($attributes, $content, $block)
+{
     global $used_blocks_css;
 
     $block_name = $block['name']; // 获取块名称，例如 acf/articles-list
@@ -45,7 +47,8 @@ function render_custom_block($attributes, $content, $block) {
     }
 }
 
-function collect_used_blocks_css() {
+function collect_used_blocks_css()
+{
     global $post;
     $used_blocks_css = [];
 
@@ -73,7 +76,8 @@ function collect_used_blocks_css() {
     return $used_blocks_css;
 }
 
-function output_inline_styles_for_blocks() {
+function output_inline_styles_for_blocks()
+{
     $cache_key = 'inline_block_styles_' . get_the_ID();
     $inline_css = get_transient($cache_key);
 
@@ -98,6 +102,7 @@ function output_inline_styles_for_blocks() {
 }
 add_action('wp_head', 'output_inline_styles_for_blocks');
 
-function minify_css($css) {
+function minify_css($css)
+{
     return preg_replace('/\s+/', ' ', $css);
 }
